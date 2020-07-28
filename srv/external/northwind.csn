@@ -1,0 +1,199 @@
+{
+  "definitions": {
+    "northwind": {
+      "kind": "service"
+    },
+    "northwind.Categories": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "CategoryID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "CategoryName": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "Description": {
+          "type": "cds.LargeString"
+        },
+        "Picture": {
+          "type": "cds.LargeBinary"
+        },
+        "Products": {
+          "type": "cds.Association",
+          "target": "northwind.Products",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "Products",
+                "CategoryID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "CategoryID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "northwind.Products": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProductID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "ProductName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "SupplierID": {
+          "type": "cds.Integer"
+        },
+        "CategoryID": {
+          "type": "cds.Integer"
+        },
+        "QuantityPerUnit": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "UnitPrice": {
+          "type": "cds.Decimal",
+          "precision": 19,
+          "scale": 4
+        },
+        "UnitsInStock": {
+          "type": "cds.Integer"
+        },
+        "UnitsOnOrder": {
+          "type": "cds.Integer"
+        },
+        "ReorderLevel": {
+          "type": "cds.Integer"
+        },
+        "Discontinued": {
+          "type": "cds.Boolean"
+        },
+        "Category": {
+          "type": "cds.Association",
+          "target": "northwind.Categories",
+          "on": [
+            {
+              "ref": [
+                "Category",
+                "CategoryID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "CategoryID"
+              ]
+            }
+          ]
+        },
+        "Supplier": {
+          "type": "cds.Association",
+          "target": "northwind.Suppliers",
+          "on": [
+            {
+              "ref": [
+                "Supplier",
+                "SupplierID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "SupplierID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "northwind.Suppliers": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "SupplierID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "CompanyName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "ContactName": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "ContactTitle": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "Address": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "City": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "Region": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "PostalCode": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Country": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "Phone": {
+          "type": "cds.String",
+          "length": 24
+        },
+        "Fax": {
+          "type": "cds.String",
+          "length": 24
+        },
+        "HomePage": {
+          "type": "cds.LargeString"
+        },
+        "Products": {
+          "type": "cds.Association",
+          "target": "northwind.Products",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "Products",
+                "SupplierID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "SupplierID"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

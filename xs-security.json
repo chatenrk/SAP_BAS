@@ -1,0 +1,7 @@
+{
+  "xsappname": "cloud-remote-service",
+  "tenant-mode": "dedicated",
+  "scopes": [],
+  "attributes": [],
+  "role-templates": []
+}
